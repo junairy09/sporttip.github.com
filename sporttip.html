@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SportTip — Training Tips for Every Sport</title>
+<meta name="description" content="Expert training tips for basketball, football, tennis, swimming and more. Level up your game with drills used by real coaches.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2f0eb;
+    --dark: #0f0f0f;
+    --card-bg: #ffffff;
+    --accent: #ff4d00;
+    --accent2: #0057ff;
+    --muted: #888880;
+    --border: #e0ddd6;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--dark);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+    border-bottom: 3px solid var(--accent);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 38px; height: 38px; }
+  .logo-icon svg { width: 100%; height: 100%; }
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem; letter-spacing: 0.06em; color: #fff;
+  }
+  .logo-text span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-btn {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--accent); color: #fff; border: none;
+    padding: 0.55rem 1.4rem; cursor: pointer; transition: background 0.2s;
+  }
+  .nav-btn:hover { background: #ff6a2a; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    min-height: 82vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: 30%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,77,0,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 4rem 3rem 4rem 3.5rem;
+    position: relative; z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,77,0,0.12); border: 1px solid rgba(255,77,0,0.3);
+    border-radius: 2px; padding: 0.35rem 0.9rem;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.6rem; width: fit-content; animation: fadeUp 0.6s 0.1s both;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; }
+  .hero-h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.8rem, 7vw, 7rem); line-height: 0.93; letter-spacing: 0.02em;
+    color: #fff; animation: fadeUp 0.6s 0.25s both;
+  }
+  .hero-h1 .stroke { -webkit-text-stroke: 1.5px rgba(255,255,255,0.4); color: transparent; }
+  .hero-h1 .orange { color: var(--accent); }
+  .hero-desc {
+    margin-top: 1.8rem; font-size: 1rem; color: rgba(255,255,255,0.5);
+    line-height: 1.75; max-width: 380px; font-weight: 300;
+    animation: fadeUp 0.6s 0.4s both;
+  }
+  .hero-actions {
+    margin-top: 2.5rem; display: flex; gap: 1rem;
+    animation: fadeUp 0.6s 0.55s both;
+  }
+  .btn-main {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; background: var(--accent);
+    color: #fff; border: none; padding: 0.85rem 2rem; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block;
+  }
+  .btn-main:hover { background: #ff6a2a; transform: translateY(-2px); }
+  .btn-out {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; background: transparent;
+    color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.85rem 2rem; cursor: pointer; text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-out:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 3rem; position: relative; z-index: 2;
+  }
+  .sport-wheel {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    width: 100%; max-width: 380px;
+  }
+  .sport-pill {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px; padding: 1.4rem 1.2rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+    cursor: pointer; transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    text-decoration: none; animation: fadeUp 0.5s both;
+  }
+  .sport-pill:hover, .sport-pill.active {
+    background: rgba(255,77,0,0.12); border-color: var(--accent); transform: translateY(-3px);
+  }
+  .sport-pill .sp-icon { font-size: 2.2rem; line-height: 1; }
+  .sport-pill .sp-name {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75);
+  }
+  .sport-pill:nth-child(1) { animation-delay: 0.2s; }
+  .sport-pill:nth-child(2) { animation-delay: 0.3s; }
+  .sport-pill:nth-child(3) { animation-delay: 0.4s; }
+  .sport-pill:nth-child(4) { animation-delay: 0.5s; }
+  .sport-pill:nth-child(5) { animation-delay: 0.6s; }
+  .sport-pill:nth-child(6) { animation-delay: 0.7s; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--accent); padding: 1rem 2.5rem;
+    display: flex; align-items: center; justify-content: center; gap: 4rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: #fff; line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.75);
+    margin-top: 2px;
+  }
+  .stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.3); }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    background: var(--card-bg); border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; gap: 0;
+    overflow-x: auto; scrollbar-width: none;
+    position: sticky; top: 64px; z-index: 90;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-tab {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); padding: 1rem 1.5rem;
+    border: none; background: none; border-bottom: 3px solid transparent;
+    cursor: pointer; white-space: nowrap; transition: color 0.2s, border-color 0.2s;
+  }
+  .filter-tab:hover { color: var(--dark); }
+  .filter-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ── TIPS SECTION ── */
+  .tips-section { padding: 4rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+  .section-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+  .sec-label {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+  }
+  .sec-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: 0.02em; line-height: 1;
+  }
+  .see-all {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);
+    text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px;
+    transition: opacity 0.2s;
+  }
+  .see-all:hover { opacity: 0.7; }
+  .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .tip-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 2px;
+    overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; display: none;
+  }
+  .tip-card.visible { display: flex; flex-direction: column; }
+  .tip-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+  .tip-card-top {
+    padding: 1.6rem 1.5rem 1.2rem; border-bottom: 1px solid var(--border); position: relative;
+  }
+  .tip-sport-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; padding: 0.25rem 0.7rem;
+    border-radius: 2px; margin-bottom: 1rem;
+  }
+  .tag-basketball { background: rgba(255,100,0,0.1); color: #ff6400; }
+  .tag-football   { background: rgba(0,140,60,0.1);  color: #008c3c; }
+  .tag-tennis     { background: rgba(200,180,0,0.12);color: #b8a000; }
+  .tag-swimming   { background: rgba(0,87,255,0.1);  color: var(--accent2); }
+  .tag-volleyball { background: rgba(180,0,180,0.1); color: #b400b4; }
+  .tag-running    { background: rgba(220,60,0,0.1);  color: #dc3c00; }
+  .tip-title {
+    font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; font-weight: 700;
+    line-height: 1.3; margin-bottom: 0.6rem;
+  }
+  .tip-level { font-size: 0.78rem; color: var(--muted); font-weight: 400; }
+  .tip-card-body { padding: 1.2rem 1.5rem; flex: 1; }
+  .tip-text { font-size: 0.9rem; color: #555; line-height: 1.7; font-weight: 300; }
+  .tip-card-footer {
+    padding: 0.9rem 1.5rem; border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; margin-top: auto;
+  }
+  .tip-meta { font-size: 0.78rem; color: var(--muted); font-family: 'Rajdhani', sans-serif; letter-spacing: 0.05em; }
+  .tip-link {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .tip-link:hover { opacity: 0.7; }
+  .no-results {
+    grid-column: 1 / -1; text-align: center; padding: 3rem;
+    font-family: 'Rajdhani', sans-serif; color: var(--muted);
+    font-size: 1.1rem; letter-spacing: 0.1em; display: none;
+  }
+
+  /* ── FEATURED ── */
+  .featured-section { background: var(--dark); padding: 4rem 2.5rem; }
+  .featured-inner { max-width: 1200px; margin: 0 auto; }
+  .featured-card {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid rgba(255,255,255,0.08); overflow: hidden;
+  }
+  .featured-left {
+    background: linear-gradient(135deg, #1a1a1a 0%, #222 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 3rem; font-size: 8rem; position: relative; overflow: hidden;
+  }
+  .featured-left::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(255,77,0,0.15) 0%, transparent 70%);
+  }
+  .featured-emoji { position: relative; z-index: 1; filter: drop-shadow(0 0 40px rgba(255,77,0,0.4)); }
+  .featured-right { padding: 3rem; background: #161616; }
+  .featured-badge {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent);
+    background: rgba(255,77,0,0.12); border: 1px solid rgba(255,77,0,0.25);
+    padding: 0.3rem 0.8rem; display: inline-block; margin-bottom: 1.2rem;
+  }
+  .featured-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem);
+    letter-spacing: 0.02em; color: #fff; line-height: 1.05; margin-bottom: 1.2rem;
+  }
+  .featured-text {
+    font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.8;
+    font-weight: 300; margin-bottom: 2rem;
+  }
+  .drill-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .drill-list li {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.5;
+  }
+  .drill-list li::before { content: '▸'; color: var(--accent); font-size: 0.8rem; margin-top: 2px; flex-shrink: 0; }
+
+  /* ── CATEGORIES ── */
+  .categories-section { padding: 4rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+  .categories-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-top: 2.5rem; }
+  .cat-card {
+    border: 1px solid var(--border); border-radius: 2px; padding: 1.5rem 1rem;
+    text-align: center; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    background: var(--card-bg); text-decoration: none; color: var(--dark); display: block;
+  }
+  .cat-card:hover { background: var(--dark); color: #fff; border-color: var(--dark); transform: translateY(-3px); }
+  .cat-icon { font-size: 2rem; margin-bottom: 0.7rem; display: block; }
+  .cat-name { font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .cat-count { font-size: 0.72rem; color: var(--muted); margin-top: 0.3rem; }
+  .cat-card:hover .cat-count { color: rgba(255,255,255,0.4); }
+
+  /* ── NEWSLETTER ── */
+  .newsletter-section { background: var(--accent); padding: 4rem 2.5rem; }
+  .newsletter-inner {
+    max-width: 700px; margin: 0 auto; text-align: center;
+  }
+  .newsletter-inner h2 {
+    font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: #fff; letter-spacing: 0.03em; margin-bottom: 0.8rem;
+  }
+  .newsletter-inner p {
+    color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem;
+  }
+  .nl-form { display: flex; gap: 0; max-width: 460px; margin: 0 auto; }
+  .nl-input {
+    flex: 1; padding: 0.85rem 1.2rem; border: none; background: rgba(0,0,0,0.25);
+    color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    outline: none; border: 1px solid rgba(255,255,255,0.2);
+  }
+  .nl-input::placeholder { color: rgba(255,255,255,0.5); }
+  .nl-btn {
+    padding: 0.85rem 1.6rem; background: var(--dark); color: #fff; border: none;
+    font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .nl-btn:hover { background: #222; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--dark); padding: 3.5rem 2.5rem 2rem; border-top: 3px solid var(--accent); }
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand .logo-text { font-size: 1.5rem; }
+  .footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.7; margin-top: 1rem; max-width: 220px; }
+  .footer-col-title {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;
+  }
+  .footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links-list a {
+    font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.06em; color: rgba(255,255,255,0.45); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links-list a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1.5rem;
+  }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); font-family: 'Rajdhani', sans-serif; letter-spacing: 0.08em; }
+  .footer-socials { display: flex; gap: 1rem; }
+  .social-btn {
+    width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.15); border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── MOBILE MENU ── */
+  .menu-toggle {
+    display: none; background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px; padding: 4px;
+  }
+  .menu-toggle span {
+    display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7);
+    transition: all 0.2s;
+  }
+  .mobile-nav {
+    display: none; position: fixed; top: 64px; left: 0; right: 0;
+    background: var(--dark); border-bottom: 2px solid var(--accent);
+    padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 99;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7);
+    text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .mobile-nav a:hover { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .categories-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .tips-grid { grid-template-columns: 1fr 1fr; }
+    .featured-card { grid-template-columns: 1fr; }
+    .featured-left { min-height: 200px; }
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .menu-toggle { display: flex; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .stats-bar { gap: 1.5rem; flex-wrap: wrap; }
+  }
+  @media (max-width: 600px) {
+    .tips-grid { grid-template-columns: 1fr; }
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    .tips-section, .categories-section, .featured-section { padding: 2.5rem 1.2rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .nl-form { flex-direction: column; }
+    .stat-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="4" fill="#ff4d00"/>
+        <text x="5" y="30" font-family="serif" font-size="26" font-weight="900" fill="white">S</text>
+        <circle cx="30" cy="12" r="7" fill="white" opacity="0.15"/>
+        <circle cx="30" cy="12" r="7" stroke="white" stroke-width="1.5" fill="none"/>
+        <path d="M23 12 Q26.5 9 30 12 Q33.5 15 37 12" stroke="white" stroke-width="1" fill="none"/>
+        <path d="M30 5 Q27 8.5 30 12 Q33 15.5 30 19" stroke="white" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <span class="logo-text">Sport<span>Tip</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#tips">Tips</a></li>
+    <li><a href="#sports">Sports</a></li>
+    <li><a href="#featured">Featured</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('newsletter').scrollIntoView({behavior:'smooth'})">Join Free</button>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#tips" onclick="closeMobileMenu()">Tips</a>
+  <a href="#sports" onclick="closeMobileMenu()">Sports</a>
+  <a href="#featured" onclick="closeMobileMenu()">Featured</a>
+  <a href="#newsletter" onclick="closeMobileMenu()">Newsletter</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Pro Training Tips</div>
+    <h1 class="hero-h1">
+      TRAIN<br>
+      <span class="stroke">LIKE A</span><br>
+      <span class="orange">PRO</span>
+    </h1>
+    <p class="hero-desc">Expert training tips for basketball, football, tennis, swimming and more. Level up your game with drills used by real coaches.</p>
+    <div class="hero-actions">
+      <a href="#tips" class="btn-main">Browse Tips</a>
+      <a href="#sports" class="btn-out">Pick Your Sport</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="sport-wheel">
+      <a href="#tips" class="sport-pill active" onclick="filterAndScroll('basketball', this)">
+        <span class="sp-icon">🏀</span><span class="sp-name">Basketball</span>
+      </a>
+      <a href="#tips" class="sport-pill" onclick="filterAndScroll('football', this)">
+        <span class="sp-icon">⚽</span><span class="sp-name">Football</span>
+      </a>
+      <a href="#tips" class="sport-pill" onclick="filterAndScroll('tennis', this)">
+        <span class="sp-icon">🎾</span><span class="sp-name">Tennis</span>
+      </a>
+      <a href="#tips" class="sport-pill" onclick="filterAndScroll('swimming', this)">
+        <span class="sp-icon">🏊</span><span class="sp-name">Swimming</span>
+      </a>
+      <a href="#tips" class="sport-pill" onclick="filterAndScroll('volleyball', this)">
+        <span class="sp-icon">🏐</span><span class="sp-name">Volleyball</span>
+      </a>
+      <a href="#tips" class="sport-pill" onclick="filterAndScroll('running', this)">
+        <span class="sp-icon">🏃</span><span class="sp-name">Running</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">200+</div>
+    <div class="stat-label">Training Tips</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-number">18</div>
+    <div class="stat-label">Sports Covered</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-number">50+</div>
+    <div class="stat-label">Expert Coaches</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-number">12K+</div>
+    <div class="stat-label">Athletes Helped</div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="tips">
+  <button class="filter-tab active" onclick="filterSport('all', this)">All Sports</button>
+  <button class="filter-tab" onclick="filterSport('basketball', this)">🏀 Basketball</button>
+  <button class="filter-tab" onclick="filterSport('football', this)">⚽ Football</button>
+  <button class="filter-tab" onclick="filterSport('tennis', this)">🎾 Tennis</button>
+  <button class="filter-tab" onclick="filterSport('swimming', this)">🏊 Swimming</button>
+  <button class="filter-tab" onclick="filterSport('volleyball', this)">🏐 Volleyball</button>
+  <button class="filter-tab" onclick="filterSport('running', this)">🏃 Running</button>
+</div>
+
+<!-- TIPS GRID -->
+<div class="tips-section">
+  <div class="section-head">
+    <div>
+      <div class="sec-label">Training Tips</div>
+      <div class="sec-title">Latest <span style="-webkit-text-stroke:1.5px #0f0f0f;color:transparent;">Drills</span></div>
+    </div>
+    <a href="#" class="see-all">See All Tips →</a>
+  </div>
+
+  <div class="tips-grid" id="tipsGrid">
+
+    <!-- BASKETBALL x3 -->
+    <div class="tip-card visible" data-sport="basketball">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-basketball">🏀 Basketball</span>
+        <div class="tip-title">Master the Crossover Dribble</div>
+        <div class="tip-level">⭐ Beginner — 15 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Practice the crossover at slow speed first — control beats speed every time. Keep your eyes up, dribble below the knee, and shift your weight with each switch.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Mike R.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="basketball">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-basketball">🏀 Basketball</span>
+        <div class="tip-title">3-Point Shooting Form Fix</div>
+        <div class="tip-level">⭐⭐ Intermediate — 20 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Align your shooting elbow under the ball, not to the side. Film yourself from the front and side — most shooters don't realize their elbow flares until they see the footage.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Lisa T.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="basketball">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-basketball">🏀 Basketball</span>
+        <div class="tip-title">Explosive First Step</div>
+        <div class="tip-level">⭐⭐⭐ Advanced — 30 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Use a "jab-and-go" sequence with cone work. Start in triple threat, jab hard, then explode past. Drive off the outside foot for maximum lateral force — not the inside.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Dev P.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <!-- FOOTBALL x3 -->
+    <div class="tip-card visible" data-sport="football">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-football">⚽ Football</span>
+        <div class="tip-title">Perfect the Weak Foot Pass</div>
+        <div class="tip-level">⭐ Beginner — 20 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Plant your strong foot beside the ball, lock the ankle of your weak foot and strike through the center. Dedicate 10 minutes each session purely to your weaker side — it compounds fast.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Ana S.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="football">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-football">⚽ Football</span>
+        <div class="tip-title">Pressing Trap Coordination</div>
+        <div class="tip-level">⭐⭐ Intermediate — Team drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">The trigger for your press must be agreed before the game. Common triggers: goalkeeper receives, center-back turns away. Practice the 3-second counter-press window after every turnover.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Fernan G.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="football">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-football">⚽ Football</span>
+        <div class="tip-title">Long Ball Aerial Control</div>
+        <div class="tip-level">⭐⭐ Intermediate — 25 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Get side-on early, watch the flight, cushion with the thigh or chest — never let the ball bounce to an opponent. Practice with a lofted machine or a tall partner serving from distance.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Marta V.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <!-- TENNIS x3 -->
+    <div class="tip-card visible" data-sport="tennis">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-tennis">🎾 Tennis</span>
+        <div class="tip-title">Topspin Forehand Mechanics</div>
+        <div class="tip-level">⭐⭐ Intermediate — 30 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Brush up the back of the ball, not through it. Drop the racket head below ball height early, then accelerate steeply upward. A low-to-high swing path generates the spin — not wrist flicking.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Priya K.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="tennis">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-tennis">🎾 Tennis</span>
+        <div class="tip-title">Second Serve Confidence</div>
+        <div class="tip-level">⭐⭐⭐ Advanced — 20 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Commit to kick spin by tossing slightly behind your head and snapping the racket from 7 o'clock to 1 o'clock. Practice 50 second serves in a row before you mix in first serves again.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach James H.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="tennis">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-tennis">🎾 Tennis</span>
+        <div class="tip-title">Net Approach Off Short Ball</div>
+        <div class="tip-level">⭐⭐ Intermediate — 15 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">When the short ball lands inside the service box, approach deep to the corner and split-step as you close the net. Punch the volley crosscourt — don't go down the line from a wide position.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Elena V.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <!-- SWIMMING x3 -->
+    <div class="tip-card visible" data-sport="swimming">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-swimming">🏊 Swimming</span>
+        <div class="tip-title">Fix Your Freestyle Rotation</div>
+        <div class="tip-level">⭐ Beginner — 20 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Rotate from the hips, not the shoulders. Use a kick board drill: one arm stretched forward, rotate to breathe, then switch. Aim for 45° rotation — not flat, not rolling too far.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Sam W.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="swimming">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-swimming">🏊 Swimming</span>
+        <div class="tip-title">Underwater Dolphin Kick</div>
+        <div class="tip-level">⭐⭐⭐ Advanced — 25 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Power comes from the core undulation, not the knees. Keep legs close together, initiate from the chest, and let the wave travel down. Practice streamline dolphin kick sets off every wall during warm-up.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Nina O.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="swimming">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-swimming">🏊 Swimming</span>
+        <div class="tip-title">Flip Turn Efficiency</div>
+        <div class="tip-level">⭐⭐ Intermediate — 15 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Hit the wall at your peak velocity — don't glide in. Count your strokes from the "T" mark each session until it becomes automatic. Push off with both feet simultaneously and hold streamline for 1–2 seconds.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Rick B.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <!-- VOLLEYBALL x3 -->
+    <div class="tip-card visible" data-sport="volleyball">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-volleyball">🏐 Volleyball</span>
+        <div class="tip-title">Platform Passing Basics</div>
+        <div class="tip-level">⭐ Beginner — 20 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Clasp your hands firmly, keep elbows straight, and contact the ball on your forearms — not your wrists. Get your platform to the ball early. Most passing errors happen because players move their arms instead of their feet.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Caro L.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="volleyball">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-volleyball">🏐 Volleyball</span>
+        <div class="tip-title">Attack Approach Timing</div>
+        <div class="tip-level">⭐⭐ Intermediate — 25 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">A 4-step approach gives the most power: left-right-left-right for right-handers. Time your last two steps to plant just as the setter's hands release. Early approaches kill your jump — patience is key.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Bruno A.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="volleyball">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-volleyball">🏐 Volleyball</span>
+        <div class="tip-title">Jump Serve Power & Control</div>
+        <div class="tip-level">⭐⭐⭐ Advanced — 30 min drill</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Toss high and in front of your hitting shoulder — not above your head. Approach like an attack, contact at your peak with a full arm swing. Aim for topspin; it drops fast and is harder to pass.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Yuki N.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <!-- RUNNING x3 -->
+    <div class="tip-card visible" data-sport="running">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-running">🏃 Running</span>
+        <div class="tip-title">Improve Running Economy</div>
+        <div class="tip-level">⭐ Beginner — Daily habit</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Run tall, relax your shoulders, and land with your foot under your hip — not in front of you. A slight forward lean from the ankles (not the waist) naturally drives momentum without extra effort.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Jade M.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="running">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-running">🏃 Running</span>
+        <div class="tip-title">Interval Training Protocol</div>
+        <div class="tip-level">⭐⭐ Intermediate — 45 min session</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Try the classic 8×400m at 5K pace with 90-second rest. The key is keeping the last rep as fast as the first. If you fade badly, you started too hot — back off 3–5 seconds per 400 next time.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Tom F.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="tip-card visible" data-sport="running">
+      <div class="tip-card-top">
+        <span class="tip-sport-tag tag-running">🏃 Running</span>
+        <div class="tip-title">Marathon Pacing Strategy</div>
+        <div class="tip-level">⭐⭐⭐ Advanced — Race strategy</div>
+      </div>
+      <div class="tip-card-body">
+        <p class="tip-text">Run the first 20 miles with your head, the last 10K with your heart. Target even splits or a very slight negative split. Going out 5 seconds per mile too fast in the first half can cost you 2–3 minutes in the back half.</p>
+      </div>
+      <div class="tip-card-footer">
+        <span class="tip-meta">👤 Coach Keiko R.</span>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+
+    <div class="no-results" id="noResults">
+      No tips found for this sport yet — check back soon!
+    </div>
+
+  </div><!-- /tips-grid -->
+</div><!-- /tips-section -->
+
+<!-- FEATURED TIP -->
+<section class="featured-section" id="featured">
+  <div class="featured-inner">
+    <div class="section-head" style="margin-bottom:2rem;">
+      <div>
+        <div class="sec-label" style="color:rgba(255,77,0,0.8)">Editor's Pick</div>
+        <div class="sec-title" style="color:#fff;">Featured <span style="-webkit-text-stroke:1.5px rgba(255,255,255,0.3);color:transparent;">Drill</span></div>
+      </div>
+    </div>
+    <div class="featured-card">
+      <div class="featured-left">
+        <span class="featured-emoji">🏀</span>
+      </div>
+      <div class="featured-right">
+        <span class="featured-badge">★ Featured — This Week</span>
+        <div class="featured-title">The Mikan Drill:<br>Dominate the Paint</div>
+        <p class="featured-text">Named after Hall of Famer George Mikan, this relentless close-range finishing drill builds touch, timing, and two-handed coordination. Run it for 60 seconds non-stop and your layup percentage will jump within two weeks.</p>
+        <ul class="drill-list">
+          <li>Start under the basket on the right side, shoot a right-handed layup</li>
+          <li>Without letting the ball bounce, catch it and shoot a left-handed layup on the other side</li>
+          <li>Alternate continuously for 60 seconds at full pace</li>
+          <li>Rest 30 seconds and repeat 4 rounds</li>
+          <li>Advance: add a reverse layup variation on every third attempt</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORT CATEGORIES -->
+<section class="categories-section" id="sports">
+  <div class="sec-label">Explore by Sport</div>
+  <div class="sec-title">All Sports</div>
+  <div class="categories-grid">
+    <a href="#tips" class="cat-card" onclick="filterSport('basketball', null); return true;">
+      <span class="cat-icon">🏀</span>
+      <div class="cat-name">Basketball</div>
+      <div class="cat-count">38 tips</div>
+    </a>
+    <a href="#tips" class="cat-card" onclick="filterSport('football', null); return true;">
+      <span class="cat-icon">⚽</span>
+      <div class="cat-name">Football</div>
+      <div class="cat-count">44 tips</div>
+    </a>
+    <a href="#tips" class="cat-card" onclick="filterSport('tennis', null); return true;">
+      <span class="cat-icon">🎾</span>
+      <div class="cat-name">Tennis</div>
+      <div class="cat-count">29 tips</div>
+    </a>
+    <a href="#tips" class="cat-card" onclick="filterSport('swimming', null); return true;">
+      <span class="cat-icon">🏊</span>
+      <div class="cat-name">Swimming</div>
+      <div class="cat-count">22 tips</div>
+    </a>
+    <a href="#tips" class="cat-card" onclick="filterSport('volleyball', null); return true;">
+      <span class="cat-icon">🏐</span>
+      <div class="cat-name">Volleyball</div>
+      <div class="cat-count">19 tips</div>
+    </a>
+    <a href="#tips" class="cat-card" onclick="filterSport('running', null); return true;">
+      <span class="cat-icon">🏃</span>
+      <div class="cat-name">Running</div>
+      <div class="cat-count">31 tips</div>
+    </a>
+    <a href="#tips" class="cat-card">
+      <span class="cat-icon">🏋️</span>
+      <div class="cat-name">Strength</div>
+      <div class="cat-count">26 tips</div>
+    </a>
+    <a href="#tips" class="cat-card">
+      <span class="cat-icon">🥊</span>
+      <div class="cat-name">Boxing</div>
+      <div class="cat-count">17 tips</div>
+    </a>
+    <a href="#tips" class="cat-card">
+      <span class="cat-icon">🏈</span>
+      <div class="cat-name">American Football</div>
+      <div class="cat-count">21 tips</div>
+    </a>
+    <a href="#tips" class="cat-card">
+      <span class="cat-icon">⛳</span>
+      <div class="cat-name">Golf</div>
+      <div class="cat-count">24 tips</div>
+    </a>
+    <a href="#tips" class="cat-card">
+      <span class="cat-icon">🚴</span>
+      <div class="cat-name">Cycling</div>
+      <div class="cat-count">15 tips</div>
+    </a>
+    <a href="#tips" class="cat-card">
+      <span class="cat-icon">🏄</span>
+      <div class="cat-name">Surfing</div>
+      <div class="cat-count">12 tips</div>
+    </a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section" id="newsletter">
+  <div class="newsletter-inner">
+    <h2>Get Weekly Tips In Your Inbox</h2>
+    <p>Join 12,000+ athletes who get fresh training drills, technique breakdowns, and coach insights every Tuesday morning.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="Your email address" id="nlEmail">
+      <button class="nl-btn" onclick="subscribeNewsletter()">Subscribe →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="4" fill="#ff4d00"/>
+            <text x="5" y="30" font-family="serif" font-size="26" font-weight="900" fill="white">S</text>
+            <circle cx="30" cy="12" r="7" fill="white" opacity="0.15"/>
+            <circle cx="30" cy="12" r="7" stroke="white" stroke-width="1.5" fill="none"/>
+            <path d="M23 12 Q26.5 9 30 12 Q33.5 15 37 12" stroke="white" stroke-width="1" fill="none"/>
+            <path d="M30 5 Q27 8.5 30 12 Q33 15.5 30 19" stroke="white" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <span class="logo-text">Sport<span>Tip</span></span>
+      </a>
+      <p class="footer-tagline">Expert training tips for every sport and every level. Train smarter, compete harder.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Sports</div>
+      <ul class="footer-links-list">
+        <li><a href="#">Basketball</a></li>
+        <li><a href="#">Football</a></li>
+        <li><a href="#">Tennis</a></li>
+        <li><a href="#">Swimming</a></li>
+        <li><a href="#">Running</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links-list">
+        <li><a href="#">Training Plans</a></li>
+        <li><a href="#">Drill Library</a></li>
+        <li><a href="#">Coach Directory</a></li>
+        <li><a href="#">Video Tips</a></li>
+        <li><a href="#">Community</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links-list">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Become a Coach</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 SportTip. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+      <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+      <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+      <a href="#" class="social-btn" aria-label="TikTok">♪</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── FILTER ──
+  function filterSport(sport, btn) {
+    const cards = document.querySelectorAll('.tip-card');
+    const tabs = document.querySelectorAll('.filter-tab');
+    const noResults = document.getElementById('noResults');
+    let visible = 0;
+
+    cards.forEach(c => {
+      const match = sport === 'all' || c.dataset.sport === sport;
+      c.classList.toggle('visible', match);
+      if (match) visible++;
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+
+    // Update filter tabs
+    if (btn) {
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+    } else {
+      // Sync tabs by sport name
+      tabs.forEach(t => {
+        const label = t.textContent.replace(/[^\w]/g, '').toLowerCase();
+        t.classList.toggle('active', label.includes(sport) || (sport === 'all' && t.textContent.includes('All')));
+      });
+    }
+
+    // Update sport pills
+    document.querySelectorAll('.sport-pill').forEach(p => {
+      const name = p.querySelector('.sp-name').textContent.toLowerCase();
+      p.classList.toggle('active', name === sport);
+    });
+  }
+
+  function filterAndScroll(sport, el) {
+    filterSport(sport, null);
+    document.getElementById('tips').scrollIntoView({ behavior: 'smooth' });
+    return false;
+  }
+
+  // ── MOBILE MENU ──
+  function toggleMenu() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+  document.addEventListener('click', e => {
+    const nav = document.getElementById('mobileNav');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !e.target.closest('.menu-toggle')) {
+      nav.classList.remove('open');
+    }
+  });
+
+  // ── NEWSLETTER ──
+  function subscribeNewsletter() {
+    const email = document.getElementById('nlEmail').value.trim();
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    const btn = document.querySelector('.nl-btn');
+    btn.textContent = '✓ You\'re In!';
+    btn.style.background = '#0f0f0f';
+    btn.style.pointerEvents = 'none';
+    document.getElementById('nlEmail').value = '';
+  }
+
+  // ── SCROLL ANIMATION ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animation = 'fadeUp 0.5s both';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.tip-card, .cat-card').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
